@@ -1,0 +1,5 @@
+   @echo off >nullfile.txt
+   set Drive=C:
+   for /F "tokens=7" %%a in ('fsutil volume diskfree %Drive% ^| find /i "# of free"') do set free=%%a
+   set free=%free:~0,-6%
+   echo c: %free%
