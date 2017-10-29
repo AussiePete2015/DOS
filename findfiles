@@ -1,0 +1,18 @@
+@echo off & Setlocal
+
+:: Search files just in the Folder
+Set "sFolder="D:\Cognos Testing\hello"
+Set "sFileType=txt"
+PushD "%sFolder%" &&(
+  FOR %%i IN (*) DO (
+    If /i "%%~xi"==".%sFileType%" (
+      Set TypeEXIST=TRUE & GoTo:EndLoop)
+  )
+)
+:EndLoop
+PopD
+
+If Defined TypeEXIST (echo FILE EXIST) else (
+   echo FILE DOES NOT EXIST)
+
+pause
